@@ -6,12 +6,13 @@ import { UserInterface } from '../../../../interfaces/user.interface';
 import { UserService } from '../../../../services/user-service/user.service';
 import { DemosService } from '../../../../services/demos/demos.service';
 import { NewsOfflineStartInterface } from '../../../../services/news-service/interfaces/news-offline-start.interface';
-import { Component, Input, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CupStates } from '../../../../enums/cup-states.enum';
 import * as moment from 'moment';
 import { finalize, take, switchMap, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ValidationDialogComponent } from './validation-dialog/validation-dialog.component';
 import { PlayerDemosDialogComponent } from './player-demos-dialog/player-demos-dialog.component';
 
@@ -19,6 +20,7 @@ import { PlayerDemosDialogComponent } from './player-demos-dialog/player-demos-d
     selector: 'app-news-offline-start',
     templateUrl: './news-offline-start.component.html',
     styleUrls: ['./news-offline-start.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsOfflineStartComponent extends Translations implements OnInit {
     @Input()
